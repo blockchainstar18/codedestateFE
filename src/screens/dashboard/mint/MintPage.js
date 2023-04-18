@@ -111,7 +111,7 @@ function MintPage() {
             signingCosmWasmClient?.execute(accounts[0].address, contractAddress, msg, fee).then(r => {
                 console.log(r)
                 setflag(true)
-                // imageShow(msg.mint.token_uri)
+                imageShow(msg.mint.token_uri)
                 toast.success(`Mint Successful! Tx hash:${r.transactionHash}}`)
 
             }).catch((err) => {
