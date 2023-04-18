@@ -26,20 +26,20 @@ function MintPage() {
 
     function mintCount() {
         const query = {
-            // num_tokens: {
-            // }
-            nft_info: {
-                token_id: '31',
-                /// unset or false will filter out expired approvals, you must set to true to see them
-                // include_expired: false
+            num_tokens: {
             }
+            // nft_info: {
+            // token_id: '31',
+            /// unset or false will filter out expired approvals, you must set to true to see them
+            // include_expired: false
+            // }
         };
         // console.log(query);
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res)
-            // const c = 10000 - res.count
+            const c = 10000 - res.count
             // console.log(c)
-            // setRemain(c)
+            setRemain(c)
         }).catch((err) => {
             console.log(err)
         })
@@ -82,10 +82,10 @@ function MintPage() {
 
 
 
-        if (!accounts[0]?.address) {
-            toast(<div className='text-red-600'>Wallet not connected!</div>)
-            return
-        }
+        // if (!accounts[0]?.address) {
+        //     toast(<div className='text-red-600'>Wallet not connected!</div>)
+        //     return
+        // }
 
         const query = {
             num_tokens: {
@@ -99,13 +99,13 @@ function MintPage() {
 
             const fee = calculateFee(150000, "0.1usei");
             const msg = {
-                // mint: {
-                //     token_id: tokenId,
-                //     owner: accounts[0]?.address,
-                //     token_uri: 'https://bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy.ipfs.nftstorage.link/' + tokenId + '.json',
-                //     extension: {},
-                // },
-                transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
+                mint: {
+                    token_id: tokenId,
+                    owner: accounts[0]?.address,
+                    token_uri: 'https://bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy.ipfs.nftstorage.link/' + tokenId + '.json',
+                    extension: {},
+                },
+                // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
             };
 
             signingCosmWasmClient?.execute(accounts[0].address, contractAddress, msg, fee).then(r => {
