@@ -6,8 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { SeiWalletProvider } from "@sei-js/react";
 
 const chainId = 'atlantic-2'
-const restUrl = 'https://demo.codedestate.com:8080/https://sei-testnet-2-rest.brocha.in:443'
-const rpcUrl = 'https://demo.codedestate.com:8080/https://sei-testnet-2-rpc.brocha.in:443'
+const rpcUrl = 'https://demo.codedestate.com:8080/https://rpc.atlantic-2.seinetwork.io'
+const restUrl = 'https://demo.codedestate.com:8080/https://rest.atlantic-2.seinetwork.io'
+
+// const restUrl = 'https://demo.codedestate.com:8080/https://sei-testnet-2-rest.brocha.in:443'
+// const rpcUrl = 'https://demo.codedestate.com:8080/https://sei-testnet-2-rpc.brocha.in:443'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
