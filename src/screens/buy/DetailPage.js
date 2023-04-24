@@ -2,7 +2,7 @@ import { Button, Col, Image, Row, Table, Card, Form, Modal } from "react-bootstr
 import { DetailData } from "../../utils/data";
 import { useState } from "react";
 import { BuyBookMode } from "../../components/modal/BookingMode";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
 import { store } from "../../configs/Store";
 import { AiOutlineClose } from "react-icons/ai";
@@ -35,6 +35,19 @@ import SEI from '../../assets/images/crypto/sei.svg';
 
 
 export function DetailPage() {
+  const { state } = useLocation();
+  /**
+   {
+  title,
+  network,
+  price,
+  images,
+  bed,
+  bath,
+  size,
+}
+   **/
+
   const [connected, setConnected, updateConnected] = store.useState('Connected');
   const [walletModalShow, setWalletModalShow, updateWalletModalShow] = store.useState("WalletModalShow");
   const [tabKey, setTabKey, updateTabKey] = store.useState("PropertiesTabActiveNum");
@@ -70,25 +83,25 @@ export function DetailPage() {
   return (
     <div className="DetailPage my-4 container">
       <Link to="/buy" className="nav-link text-purple fw-bold fs-6 my-2"><FaAngleLeft className="me-2" />Back</Link>
-      <div className="fs-5 fw-bold" >70 Wahington Street #9G</div>
+      <div className="fs-5 fw-bold" >{state?.title}</div>
       <div className="d-flex align-items-center justify-content-between my-2">
-        <div className="">70 Wahington Street #9G</div>
+        <div className="">{state?.title}</div>
         <div className="d-flex align-items-center">
           <span className="ms-5">Share</span>
           <span className="ms-5">Save</span>
         </div>
       </div>
-      <div className="NFTGallary my-3 border-bottom pb-3 overflow-hidden" style={{ height: '500px' }} onClick={() => { setVisible(true); }}>
+      <div className="NFTGallary my-3 border-bottom pb-3 overflow-hidden" style={{ height: '500px', minHeight: 500 }} onClick={() => { setVisible(true); }}>
         <div className="d-flex align-items-center justify-content-between gap-2 rounded overflow-hidden">
-          <div className="w-50 overflow-hidden" style={{ height: '500px' }}><Image src={GalleryImg4} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+          <div className="w-50 overflow-hidden" style={{ height: '500px' }}><Image src={state?.images[0]} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
           <div className="w-50 overflow-hidden" style={{ height: '500px' }}>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg2} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg3} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[1]} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[2]} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg1} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg5} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[3]} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[4]} width="100%" height="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
           </div>
         </div>
@@ -165,8 +178,8 @@ export function DetailPage() {
         <Col sm={12} md={4}>
           <Card className="shadow">
             <Card.Body>
-              <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Current Price : <Image src={SEI} width="18" className="mx-1"/><span className="fw-bold fs-5">630 SEI</span></div>
-              <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Highest Bid : <Image src={SEI} width="18" className="mx-1"/><span className="fw-bold fs-5">520 SEI</span></div>
+              <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Current Price : <Image src={SEI} width="18" className="mx-1" /><span className="fw-bold fs-5">630 SEI</span></div>
+              <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Highest Bid : <Image src={SEI} width="18" className="mx-1" /><span className="fw-bold fs-5">520 SEI</span></div>
               <div className="fs-6 fw-semibold mb-2">Bid Price</div>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Control type="number" placeholder="Enter your Bid Price" />

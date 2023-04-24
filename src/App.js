@@ -59,8 +59,8 @@ function App() {
               <Route path="/buy" element={<BuyPage />} />
               <Route path="/sell" element={<SellPage />} />
               <Route path="/rent" element={<RentPage />} />
-              <Route path="/detail/buy/:detailID" element={<DetailPage />} />
-              <Route path="/detail/rent/:detailID" element={<RentDetailPage />} />
+              <Route path="/detail/buy" element={<DetailPage />} />
+              <Route path="/detail/rent" element={<RentDetailPage />} />
             </Route>
             {connected ? (
               <Route element={<DashboardLayout />}>

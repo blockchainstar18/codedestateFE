@@ -12,7 +12,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { useState } from "react";
 import DatePicker from "react-multi-date-picker";
 import { AiOutlineHeart, AiOutlineUpload } from "react-icons/ai";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import GalleryImg1 from '../../../assets/images/building/10.webp';
 import GalleryImg2 from '../../../assets/images/building/3.webp';
 import GalleryImg3 from '../../../assets/images/building/4.webp';
@@ -31,8 +31,11 @@ import { DetailData } from "../../../utils/data";
 import Viewer from 'react-viewer';
 
 export default function PropertiesDetail() {
+  const { state } = useLocation();
+  //{ title, price, currency, images }
 
   const [type, setType, updateType] = store.useState("DetailType");
+  const [tabKey, setTabKey, updateTabKey] = store.useState("PropertiesTabActiveNum");
   const [mode, setMode, updateMode] = store.useState("Mode");
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -62,9 +65,9 @@ export default function PropertiesDetail() {
       <div className="fs-6 opacity-50 mb-3">
         Welcome to Coede Estate Property Admin
       </div>
-      <div className="fs-5 fw-bold mb-2">70 Washington Street #9G</div>
+      <div className="fs-5 fw-bold mb-2">{state?.title}</div>
       <div className="d-flex align-items-center justify-content-between">
-        <div className=""><u>70 Washington Street #9G</u></div>
+        <div className=""><u>{state?.title}</u></div>
         <div className="d-flex align-items-center">
           <Link className="nav-link opacity-50"><AiOutlineUpload className="me-2" />Share</Link>
           <Link className="nav-link ms-4 opacity-50"><AiOutlineHeart className="me-2" />Save</Link>
@@ -72,15 +75,15 @@ export default function PropertiesDetail() {
       </div>
       <div className="NFTGallary my-3 border-bottom pb-3">
         <div className="d-flex align-items-center justify-content-between gap-2 rounded overflow-hidden" onClick={() => { setVisible(true); }}>
-          <div className="w-50 overflow-hidden" style={{ height: '500px' }}><Image src={GalleryImg4} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+          <div className="w-50 overflow-hidden" style={{ height: '500px', minHeight: 500 }}><Image src={state?.images[0]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
           <div className="w-50 overflow-hidden" style={{ height: '500px' }}>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg2} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg3} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[1]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[2]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg1} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px' }}><Image src={GalleryImg5} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[3]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[4]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
           </div>
         </div>
@@ -93,7 +96,7 @@ export default function PropertiesDetail() {
                 <div className="fw-semibold fs-5 mb-3">Entire villa sold by sei14zd...0qzk</div>
               ) : (
                 <div className="fw-semibold fs-5 mb-3">Entire villa Hosted by sei14zd...0qzk</div>
-              )}              
+              )}
               <div className="d-flex align-items-center text-gray">
                 <small className="me-2">5 guests</small>
                 <small className="me-2">3 bedrooms</small>
@@ -104,29 +107,29 @@ export default function PropertiesDetail() {
             <Image src={GalleryImg3} width="80" height="80" className="rounded-circle" />
           </div>
           {mode != "BUY" && (
-          <div className="border-bottom pb-3">
-            <div className="d-flex my-2">
-              <Image src={Star} width="25" height="25" />
-              <div className="">
-                <div className="fw-semibold fs-6 mb-2">Dive right in</div>
-                <div className="text-gray">this is one of the few places in the area with a pool.</div>
+            <div className="border-bottom pb-3">
+              <div className="d-flex my-2">
+                <Image src={Star} width="25" height="25" />
+                <div className="">
+                  <div className="fw-semibold fs-6 mb-2">Dive right in</div>
+                  <div className="text-gray">this is one of the few places in the area with a pool.</div>
+                </div>
+              </div>
+              <div className="d-flex my-2">
+                <Image src={Star} width="25" height="25" />
+                <div className="">
+                  <div className="fw-semibold fs-6 mb-2">Experienced host</div>
+                  <div className="text-gray">Bookiply has 1429 reviews for other places</div>
+                </div>
+              </div>
+              <div className="d-flex my-2">
+                <Image src={Star} width="25" height="25" />
+                <div className="">
+                  <div className="fw-semibold fs-6 mb-2">Dive right in</div>
+                  <div className="text-gray">Booliply has revieved 5-star ratings from 100% of recent guest.</div>
+                </div>
               </div>
             </div>
-            <div className="d-flex my-2">
-              <Image src={Star} width="25" height="25" />
-              <div className="">
-                <div className="fw-semibold fs-6 mb-2">Experienced host</div>
-                <div className="text-gray">Bookiply has 1429 reviews for other places</div>
-              </div>
-            </div>
-            <div className="d-flex my-2">
-              <Image src={Star} width="25" height="25" />
-              <div className="">
-                <div className="fw-semibold fs-6 mb-2">Dive right in</div>
-                <div className="text-gray">Booliply has revieved 5-star ratings from 100% of recent guest.</div>
-              </div>
-            </div>
-          </div>
           )}
           <div className="border-bottom pb-3">
             <Image src={Logo} className="mt-3" />
@@ -136,7 +139,7 @@ export default function PropertiesDetail() {
               ) : (
                 "Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in."
               )}
-              
+
             </div>
             <div className="text-dark-purple">Learn more</div>
           </div>
@@ -218,8 +221,12 @@ export default function PropertiesDetail() {
                         </Form.Group>
                       </div>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "listing" && (
@@ -273,13 +280,17 @@ export default function PropertiesDetail() {
                         </Form.Group>
                       </div>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "bid" && (
                   <Card.Body>
-                    <div className="fs-6 fw-semibold mb-3"><span className="me-1"><Image src={SEI} width="18" className="me-1"/>357</span><small className="text-gray">night</small></div>
+                    <div className="fs-6 fw-semibold mb-3"><span className="me-1"><Image src={SEI} width="18" className="me-1" />357</span><small className="text-gray">night</small></div>
                     <div className="border-gray rounded border p-2">
                       <div>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -317,7 +328,7 @@ export default function PropertiesDetail() {
                     <div className="d-flex align-items-center justify-content-between my-2"><small className="text-gray">Cleaning fee</small><small className="text-gray">131 SEI</small></div>
                     <div className="d-flex align-items-center justify-content-between my-2"><small className="text-gray">Service fee</small><small className="text-gray">0 SEI</small></div>
                     <hr />
-                    <div className="d-flex align-items-center justify-content-between my-2"><div className="fs-6 fw-bold">Total</div><div className="fs-6 fw-bold"><Image src={SEI} width="20" className="me-1"/>9,781 SEI</div></div>
+                    <div className="d-flex align-items-center justify-content-between my-2"><div className="fs-6 fw-bold">Total</div><div className="fs-6 fw-bold"><Image src={SEI} width="20" className="me-1" />9,781 SEI</div></div>
 
                   </Card.Body>
                 )}
@@ -372,8 +383,12 @@ export default function PropertiesDetail() {
                         <Form.Control type="text" placeholder="" />
                       </Form.Group>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "listing" && (
@@ -424,20 +439,28 @@ export default function PropertiesDetail() {
                         <Form.Control type="text" placeholder="" />
                       </Form.Group>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "bid" && (
                   <Card.Body>
-                    <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Highest Bid : <Image src={SEI} width="20" className="mx-1"/><span className="fw-bold fs-5">520 SEI</span></div>
+                    <div className="fs-6 fw-semibold mb-2 d-flex align-items-center">Highest Bid : <Image src={SEI} width="20" className="mx-1" /><span className="fw-bold fs-5">520 SEI</span></div>
                     <div className="fs-6 fw-semibold mb-2">Bid Price</div>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Control type="number" placeholder="Enter your Bid Price" />
                     </Form.Group>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Update Bid Price</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(4)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Update Bid Price</Button>
+                    </NavLink>
                     <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2" onClick={() => { setHost(false); showMessageModal() }}>Send Message</Button>
-                    <Button className="text-dark-purple bg-white border-dark-purple fs-5 fw-bold w-100 my-2">Cancel</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(4)} className="nav-link">
+                      <Button className="text-dark-purple bg-white border-dark-purple fs-5 fw-bold w-100 my-2">Cancel</Button>
+                    </NavLink>
                     <div className="my-3 text-gray text-center">You will not be charged yet. You will be required to sign a message from your wallet to confirm the reservation</div>
                   </Card.Body>
                 )}
@@ -726,15 +749,15 @@ export default function PropertiesDetail() {
       )}
       {mode != "BUY" && (
         <Row className="my-2 border-bottom pb-3">
-        <Col sm={12} md={12}>
-          <div className="fs-5 fw-bold mb-3">No reviews (yet)</div>
-          <div className="d-flex">
-            <AiOutlineHeart className="mt-1" />
-            <div className="opacity-50 ms-2">This host has 1,429 reviews for other places<br />to stay. <strong className=""><u>Show other reviews</u></strong></div>
-          </div>
-        </Col>
-      </Row>
-      )}      
+          <Col sm={12} md={12}>
+            <div className="fs-5 fw-bold mb-3">No reviews (yet)</div>
+            <div className="d-flex">
+              <AiOutlineHeart className="mt-1" />
+              <div className="opacity-50 ms-2">This host has 1,429 reviews for other places<br />to stay. <strong className=""><u>Show other reviews</u></strong></div>
+            </div>
+          </Col>
+        </Row>
+      )}
       <Row className="my-2 border-bottom pb-3">
         <Col sm={12} md={12}>
           <div className="fs-5 fw-bold">Where you'll be</div>
