@@ -35,6 +35,7 @@ export default function PropertiesDetail() {
   //{ title, price, currency, images }
 
   const [type, setType, updateType] = store.useState("DetailType");
+  const [tabKey, setTabKey, updateTabKey] = store.useState("PropertiesTabActiveNum");
   const [mode, setMode, updateMode] = store.useState("Mode");
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -220,8 +221,12 @@ export default function PropertiesDetail() {
                         </Form.Group>
                       </div>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "listing" && (
@@ -275,8 +280,12 @@ export default function PropertiesDetail() {
                         </Form.Group>
                       </div>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/rent/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "bid" && (
@@ -374,8 +383,12 @@ export default function PropertiesDetail() {
                         <Form.Control type="text" placeholder="" />
                       </Form.Group>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">List Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "listing" && (
@@ -426,8 +439,12 @@ export default function PropertiesDetail() {
                         <Form.Control type="text" placeholder="" />
                       </Form.Group>
                     </div>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(3)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Edit Price</Button>
+                    </NavLink>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(1)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Unlist Property</Button>
+                    </NavLink>
                   </Card.Body>
                 )}
                 {type == "bid" && (
@@ -437,9 +454,13 @@ export default function PropertiesDetail() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Control type="number" placeholder="Enter your Bid Price" />
                     </Form.Group>
-                    <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Update Bid Price</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(4)} className="nav-link">
+                      <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2">Update Bid Price</Button>
+                    </NavLink>
                     <Button className="text-white bg-dark-purple border-dark-purple fs-5 fw-bold w-100 my-2" onClick={() => { setHost(false); showMessageModal() }}>Send Message</Button>
-                    <Button className="text-dark-purple bg-white border-dark-purple fs-5 fw-bold w-100 my-2">Cancel</Button>
+                    <NavLink to="/dashboard/buy/properties" onClick={()=>setTabKey(4)} className="nav-link">
+                      <Button className="text-dark-purple bg-white border-dark-purple fs-5 fw-bold w-100 my-2">Cancel</Button>
+                    </NavLink>
                     <div className="my-3 text-gray text-center">You will not be charged yet. You will be required to sign a message from your wallet to confirm the reservation</div>
                   </Card.Body>
                 )}
