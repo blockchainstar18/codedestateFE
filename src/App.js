@@ -70,7 +70,7 @@ function App() {
                 <Route path="/dashboard/buy/properties/:detailID" element={<PropertiesDetail />} />
                 <Route path="/dashboard/buy/message" element={<MessagePage />} />
                 <Route path="/dashboard/buy/favorite" element={<FavoritesPage />} />
-                <Route path="/dashboard/buy/favorite/detail/:ID" element={<FavoriteDetailPage />} />
+                <Route path="/dashboard/buy/favorite/detail" element={<FavoriteDetailPage />} />
                 <Route path="/dashboard/buy/transactions" element={<TransactionPage />} />
                 <Route path="/dashboard/buy/offers" element={<BidOfferPage />} />
                 <Route path="/dashboard/buy/rewards" element={<RewardsPage />} />

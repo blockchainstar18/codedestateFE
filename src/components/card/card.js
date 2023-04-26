@@ -167,12 +167,28 @@ export const FavoriteCard = ({
   bath,
   size,
 }) => {
+  const navigation = useNavigate();
   const [loading, setLoading] = useState(true);
   const [header, setHeader, updateHeader] = store.useState("Header");
   const [mode, setMode, updateMode] = store.useState("Mode");
   setTimeout(() => {
     setLoading(false);
   }, "3000");
+
+  const clickHandler = () => {
+    setHeader("BUY");
+    navigation("/dashboard/buy/favorite/detail/", {
+      state: {
+        title,
+        network,
+        price,
+        images,
+        bed,
+        bath,
+        size,
+      }
+    })
+  }
 
   return (
     <Card className="NormalCard my-2">
@@ -189,10 +205,9 @@ export const FavoriteCard = ({
             {images.map((item, idx) => (
               <Carousel.Item>
                 {mode == "BUY" ? (
-                  <Link
+                  <div
                     className="nav-link"
-                    to="/dashboard/buy/favorite/detail/1"
-                    onClick={() => setHeader("BUY")}
+                    onClick={clickHandler}
                   >
                     <Image
                       src={item}
@@ -202,12 +217,11 @@ export const FavoriteCard = ({
                       className="w-100 object-fit-cover border rounded"
                       style={{ objectFit: "cover" }}
                     />
-                  </Link>
+                  </div>
                 ) : (
-                  <Link
+                  <div
                     className="nav-link"
-                    to="/dashboard/rent/favorite/detail/1"
-                    onClick={() => setHeader("BUY")}
+                    onClick={clickHandler}
                   >
                     <Image
                       src={item}
@@ -217,21 +231,21 @@ export const FavoriteCard = ({
                       className="w-100 object-fit-cover border rounded"
                       style={{ objectFit: "cover" }}
                     />
-                  </Link>
+                  </div>
                 )}
               </Carousel.Item>
             ))}
           </Carousel>
         )}
 
-        <Link
+        <div
           className="nav-link"
           to={
             mode == "BUY"
               ? "/dashboard/buy/favorite/detail/1"
               : "/dashboard/rent/favorite/detail/1"
           }
-          onClick={() => setHeader("BUY")}
+          onClick={clickHandler}
         >
           {loading ? (
             <Skeleton containerClassName="avatar-skeleton" />
@@ -272,7 +286,7 @@ export const FavoriteCard = ({
               </div>
             </div>
           )}
-        </Link>
+        </div>
       </Card.Body>
     </Card>
   );

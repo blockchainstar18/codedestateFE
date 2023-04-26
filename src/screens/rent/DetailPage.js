@@ -575,7 +575,7 @@ export function RentDetailPage() {
         onClose={() => {
           setVisible(false);
         }}
-        images={DetailData.images}
+        images={state?.images}
       />
     </div>
   );
