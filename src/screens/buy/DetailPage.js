@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { Button, Col, Image, Row, Table, Card, Form, Modal } from "react-bootstrap";
 import { DetailData } from "../../utils/data";
-import { useState } from "react";
 import { BuyBookMode } from "../../components/modal/BookingMode";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaAngleLeft } from "react-icons/fa";
@@ -48,6 +48,7 @@ export function DetailPage() {
 }
    **/
 
+  const [viewerData, setViewerData] = React.useState([]);
   const [connected, setConnected, updateConnected] = store.useState('Connected');
   const [walletModalShow, setWalletModalShow, updateWalletModalShow] = store.useState("WalletModalShow");
   const [tabKey, setTabKey, updateTabKey] = store.useState("PropertiesTabActiveNum");
@@ -55,6 +56,22 @@ export function DetailPage() {
   const [host, setHost] = useState(false);
   const [visible, setVisible] = useState(false);
   const [messageModal, setMessageModal] = useState(false);
+
+  React.useEffect(() => {
+    try {
+      let _viewerData = []
+      for (let i = 0; i < state.images.length; i++) {
+        _viewerData.push({
+          src: state.images[i],
+          alt: "Viewer"
+        });
+      }
+      debugger;
+      setViewerData(_viewerData);
+    } catch (e) {
+  
+    }
+  }, [])
 
   const showModal = () => {
     setShow(true);
@@ -273,8 +290,9 @@ export function DetailPage() {
       </Modal>
       <Viewer
         visible={visible}
+        defaultSize={{width: 600, height: 600}}
         onClose={() => { setVisible(false); }}
-        images={DetailData.images}
+        images={viewerData}
       />
     </div>
   )

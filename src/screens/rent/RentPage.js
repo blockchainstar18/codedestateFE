@@ -197,7 +197,7 @@ function RentPage() {
               onClick={() => setTimeShow(true)}
             >
               {dates[0]?.toDate?.() == undefined &&
-              dates[1]?.toDate?.() == undefined ? (
+                dates[1]?.toDate?.() == undefined ? (
                 "Any Week"
               ) : (
                 <div className=" d-flex flex-column">
@@ -484,7 +484,7 @@ function RentPage() {
       {data.length > 0 ? (
         <Row className="Search-result mt-2" style={{ minHeight: "81.5vh" }}>
           {data.map((item, idx) => (
-            <Col xs={12} sm={12} md={2}>
+            <Col xs={12} sm={12} md={2} key={item.idx + "-" + idx}>
               <NormalRentCard
                 key={item.idx}
                 title={item?.address?.city + " , " + item?.address?.state}

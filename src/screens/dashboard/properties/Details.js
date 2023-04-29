@@ -75,15 +75,15 @@ export default function PropertiesDetail() {
       </div>
       <div className="NFTGallary my-3 border-bottom pb-3">
         <div className="d-flex align-items-center justify-content-between gap-2 rounded overflow-hidden" onClick={() => { setVisible(true); }}>
-          <div className="w-50 overflow-hidden" style={{ height: '500px', minHeight: 500 }}><Image src={state?.images[0]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+          <div className="w-50 overflow-hidden" style={{ height: '500px', minHeight: 500 }}><Image src={state?.images[0]?.src} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
           <div className="w-50 overflow-hidden" style={{ height: '500px' }}>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[1]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[2]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[1]?.src} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[2]?.src} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
             <div className="d-flex align-items-center justify-content-between gap-2 mb-2">
-              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[3]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
-              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[4]} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[3]?.src} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
+              <div className="w-50 overflow-hidden" style={{ height: '250px', minHeight: 250 }}><Image src={state?.images[4]?.src} width="100%" style={{ objectFit: "cover", cursor: 'pointer' }} /></div>
             </div>
           </div>
         </div>

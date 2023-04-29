@@ -211,7 +211,7 @@ function BuyPage() {
         <Row className="Search-result mt-2" style={{ minHeight: "81.5vh" }}>
           {
             data.map((item, idx) => (
-              <Col xs={12} sm={12} md={2}>
+              <Col xs={12} sm={12} md={2} key={item.idx + "-" + idx}>
                 <NormalCard key={item.idx} title={item?.address?.city + " , " + item?.address?.state} network={item?.currency} price={item?.price} bed={item?.bedrooms} bath={item?.bathrooms} size={item?.size} images={item?.photos} />
               </Col>
             ))

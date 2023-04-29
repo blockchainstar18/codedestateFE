@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Col, Image, Row, Card, Form, Modal } from "react-bootstrap";
 import { DetailData } from "../../utils/data";
 import DatePicker from "react-multi-date-picker";
@@ -50,7 +50,11 @@ export function RentDetailPage() {
       },
     }
    * */
-  console.log("======", state);
+  console.log("======", state?.images);
+
+  const [viewerData, setViewerData] = React.useState([]);
+
+  console.log(viewerData)
 
   const [minDate, setMinDate] = useState(new Date());
   const [mode, setMode, updateMode] = store.useState("Mode");
@@ -60,6 +64,22 @@ export function RentDetailPage() {
   const [host, setHost] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  React.useEffect(() => {
+    try {
+      let _viewerData = []
+      for (let i = 0; i < state.images.length; i++) {
+        _viewerData.push({
+          src: state.images[i],
+          alt: "Viewer"
+        });
+      }
+      debugger;
+      setViewerData(_viewerData);
+    } catch (e) {
+  
+    }
+  }, [])
 
   const [values, setValues] = useState([
     new DateObject().setDay(4).subtract(1, "month"),
@@ -572,10 +592,11 @@ export function RentDetailPage() {
       </Modal>
       <Viewer
         visible={visible}
+        defaultSize={{width: 600, height: 600}}
         onClose={() => {
           setVisible(false);
         }}
-        images={DetailData.images}
+        images={viewerData}
       />
     </div>
   );

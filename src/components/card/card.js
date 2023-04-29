@@ -172,12 +172,28 @@ export const FavoriteCard = ({
   bath,
   size,
 }) => {
+  const navigation = useNavigate();
   const [loading, setLoading] = useState(true);
   const [header, setHeader, updateHeader] = store.useState("Header");
   const [mode, setMode, updateMode] = store.useState("Mode");
   setTimeout(() => {
     setLoading(false);
   }, "3000");
+
+  const clickHandler = () => {
+    setHeader("BUY");
+    navigation("/dashboard/buy/favorite/detail/", {
+      state: {
+        title,
+        network,
+        price,
+        images,
+        bed,
+        bath,
+        size,
+      }
+    })
+  }
 
   return (
     <Card className="NormalCard my-2">
@@ -194,10 +210,9 @@ export const FavoriteCard = ({
             {images.map((item, idx) => (
               <Carousel.Item>
                 {mode == "BUY" ? (
-                  <Link
+                  <div
                     className="nav-link"
-                    to="/dashboard/buy/favorite/detail/1"
-                    onClick={() => setHeader("BUY")}
+                    onClick={clickHandler}
                   >
                     <Image
                       src={item}
@@ -207,12 +222,11 @@ export const FavoriteCard = ({
                       className="w-100 object-fit-cover border rounded"
                       style={{ objectFit: "cover" }}
                     />
-                  </Link>
+                  </div>
                 ) : (
-                  <Link
+                  <div
                     className="nav-link"
-                    to="/dashboard/rent/favorite/detail/1"
-                    onClick={() => setHeader("BUY")}
+                    onClick={clickHandler}
                   >
                     <Image
                       src={item}
@@ -222,21 +236,21 @@ export const FavoriteCard = ({
                       className="w-100 object-fit-cover border rounded"
                       style={{ objectFit: "cover" }}
                     />
-                  </Link>
+                  </div>
                 )}
               </Carousel.Item>
             ))}
           </Carousel>
         )}
 
-        <Link
+        <div
           className="nav-link"
           to={
             mode == "BUY"
               ? "/dashboard/buy/favorite/detail/1"
               : "/dashboard/rent/favorite/detail/1"
           }
-          onClick={() => setHeader("BUY")}
+          onClick={clickHandler}
         >
           {loading ? (
             <Skeleton containerClassName="avatar-skeleton" />
@@ -277,7 +291,7 @@ export const FavoriteCard = ({
               </div>
             </div>
           )}
-        </Link>
+        </div>
       </Card.Body>
     </Card>
   );
@@ -630,6 +644,9 @@ export const FavouritInfoCard = () => {
 export const ListPropertyCard = ({ title, price, currency, images }) => {
   const navigation = useNavigate();
   const [type, setType, updateType] = store.useState("DetailType");
+  const [tabKey, setTabKey, updateTabKey] = store.useState("PropertiesTabActiveNum");
+  const [mode, setMode, updateMode] = store.useState('Mode');
+  console.log(mode);
   return (
     <div className="ListPropertyCard col-sm-12 col-md-2">
       <Card className="border-0">
@@ -639,7 +656,7 @@ export const ListPropertyCard = ({ title, price, currency, images }) => {
             className="nav-link"
             onClick={() => {
               setType("verify");
-              navigation("/dashboard/buy/properties/1", { state: { title, price, currency, images } })
+              navigation("/dashboard/" + (mode == "BUY" ? "buy" : "rent") + "/properties/1", { state: { title, price, currency, images } })
             }}
           >
             <DetailCarousel images={images} />
@@ -651,9 +668,11 @@ export const ListPropertyCard = ({ title, price, currency, images }) => {
               </div>
             </div>
           </div>
-          <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple">
-            List
-          </Button>
+          <NavLink to={"/dashboard/" + (mode == "BUY" ? "buy" : "rent") + "/properties"} onClick={()=>setTabKey(3)} className="nav-link">
+            <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple">
+              List
+            </Button>
+          </NavLink>
         </Card.Body>
       </Card>
     </div>

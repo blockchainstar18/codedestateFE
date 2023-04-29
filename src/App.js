@@ -70,7 +70,7 @@ function App() {
                 <Route path="/dashboard/buy/properties/:detailID" element={<PropertiesDetail />} />
                 <Route path="/dashboard/buy/message" element={<MessagePage />} />
                 <Route path="/dashboard/buy/favorite" element={<FavoritesPage />} />
-                <Route path="/dashboard/buy/favorite/detail/:ID" element={<FavoriteDetailPage />} />
+                <Route path="/dashboard/buy/favorite/detail" element={<FavoriteDetailPage />} />
                 <Route path="/dashboard/buy/transactions" element={<TransactionPage />} />
                 <Route path="/dashboard/buy/offers" element={<BidOfferPage />} />
                 <Route path="/dashboard/buy/rewards" element={<RewardsPage />} />
@@ -86,7 +86,7 @@ function App() {
                 <Route path="/dashboard/rent/properties/:detailID" element={<PropertiesDetail />} />
                 <Route path="/dashboard/rent/message" element={<RentMessagePage />} />
                 <Route path="/dashboard/rent/favorite" element={<FavoritesPage />} />
-                <Route path="/dashboard/rent/favorite/detail/:ID" element={<FavoriteDetailPage />} />
+                <Route path="/dashboard/rent/favorite/detail" element={<FavoriteDetailPage />} />
                 <Route path="/dashboard/rent/transactions" element={<TransactionPage />} />
                 <Route path="/dashboard/rent/rewards" element={<RewardsPage />} />
                 <Route path="/dashboard/rent/holding" element={<HoldingPage />} />
