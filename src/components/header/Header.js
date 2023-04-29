@@ -13,7 +13,6 @@ import Wallet4 from '../../assets/images/wallet/faicon.png';
 import { store } from "../../configs/Store";
 import { useWallet } from '@sei-js/react';
 import { WalletConnectButton } from '@sei-js/react';
-
 import { SeiWalletContext } from "@sei-js/react";
 import { wait } from "@testing-library/user-event/dist/utils";
 import { ToastContainer, toast } from 'react-toastify';
@@ -63,7 +62,7 @@ export default function Header() {
     }
     handleClose();
   }
-  
+
 
   const connectWallet = () => {
     if (accounts.length)

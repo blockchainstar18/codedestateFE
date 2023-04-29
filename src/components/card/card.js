@@ -35,12 +35,17 @@ import BuildingIcon from "../../assets/images/icons/building.svg";
 import UpIcon from "../../assets/images/icons/up.svg";
 import DownIcon from "../../assets/images/icons/down.svg";
 import VerifyMode from "../modal/VerifyMode";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../../assets/images/Logo.svg";
 import { store } from "../../configs/Store";
 import SEIIcon from "../../assets/images/crypto/sei.svg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useWallet, useCosmWasmClient, useSigningCosmWasmClient } from '@sei-js/react';
+import { AiOutlineClose } from "react-icons/ai";
+
+
+
 
 export const NormalCard = ({
   title,
@@ -732,27 +737,113 @@ export const UnVerifyPropertyCard = ({ title, images }) => {
   );
 };
 
-export const MyNFTCard = () => {
+export const MyNFTCard = (tokenId) => {
+  const contractAddress = 'sei1l6c37a5xenquyjxjvsehcn4j97tca94k4yk2uzfmpeamu2vw350qmypwq4'
+  const { cosmWasmClient } = useCosmWasmClient()
+  const [imgURL, setURL] = useState('')
+  const [title, setTitle] = useState('')
+  const [modalShow, setModalShow] = useState(false);
+  const [detail, setDetail] = useState('')
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+
+  console.log(tokenId)
+  const subQuery = {
+    nft_info: {
+      token_id: tokenId.tokenId
+    }
+  }
+  cosmWasmClient?.queryContractSmart(contractAddress, subQuery).then((res) => {
+    console.log(res)
+    fetch(res.token_uri).then(res => {
+      res.json().then(res => {
+        console.log(res)
+        setURL(res.properties.image.description)
+        setName(res.properties.name.description)
+        setDescription(res.properties.description.description)
+
+
+        setTitle(res.title)
+        setDetail(JSON.stringify(res))
+      }).catch((err) => {
+        console.log(err)
+      })
+    }).catch((err) => {
+      console.log(err)
+    })
+
+
+  }).catch((err) => {
+    console.log(err)
+  })
+
+
+  const handleClose = () => {
+    setModalShow(false)
+  }
+  const handleShow = () => {
+    setModalShow(true)
+  }
+
+
+
   return (
+
+
     <div className="MyNFTCard col-sm-12 col-md-2">
       <Card className="border-0">
         <Card.Body>
           <Image
-            src={BuildingImage}
+            src={imgURL}
             width="100%"
             height="250"
             className="rounded mb-3"
           />
-          <Link to="/dashboard/properties/1" className="nav-link">
-            <div className="d-flex align-items-center justify-content-between mb-2">
-              <div className="fw-bold">Kent Avenue #310</div>
-            </div>
-          </Link>
-          <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple">
+          {/* <Link to="/dashboard/properties/1" className="nav-link"> */}
+          <div className="d-flex align-items-center justify-content-between mb-2">
+            <div className="fw-bold">{title}</div>
+          </div>
+          {/* </Link> */}
+          <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple" onClick={() => handleShow()}>
             View
           </Button>
         </Card.Body>
       </Card>
+
+
+      <Modal show={modalShow} onHide={handleClose} centered>
+        <Modal.Body>
+          <div className="text-end"><AiOutlineClose onClick={handleClose} /></div>
+          <div className="fs-4 text-center fw-bold mb-3">{title}</div>
+          <Card.Body>
+            <div className="d-flex justify-content-center">
+              <Image
+                src={imgURL}
+                width="100%"
+                height="500"
+                className="rounded"
+              />
+            </div>
+            {/* <div>
+              <div>
+                <div className="fw-bold">Name</div>
+                <div className="fw-semibold">{name}</div>
+
+              </div>
+
+              <div>
+                <div className="fw-bold">Description</div>
+                <div className="fw-semibold">{description}</div>
+
+              </div>
+
+            </div> */}
+
+          </Card.Body>
+        </Modal.Body>
+      </Modal>
+
+
     </div>
   );
 };
