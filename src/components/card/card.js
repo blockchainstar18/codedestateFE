@@ -668,7 +668,7 @@ export const ListPropertyCard = ({ title, price, currency, images }) => {
               </div>
             </div>
           </div>
-          <NavLink to={"/dashboard/" + (mode == "BUY" ? "buy" : "rent") + "/properties"} onClick={()=>setTabKey(3)} className="nav-link">
+          <NavLink to={"/dashboard/" + (mode == "BUY" ? "buy" : "rent") + "/properties"} onClick={() => setTabKey(3)} className="nav-link">
             <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple">
               List
             </Button>
@@ -809,21 +809,21 @@ export const MyNFTCard = (tokenId) => {
   return (
 
 
-    <div className="MyNFTCard col-sm-12 col-md-2">
+    <div className="MyNFTCard" style={{ "width": "max-content" }}>
       <Card className="border-0">
         <Card.Body>
           <Image
             src={imgURL}
-            width="100%"
+            width="250"
             height="250"
             className="rounded mb-3"
           />
           {/* <Link to="/dashboard/properties/1" className="nav-link"> */}
-          <div className="d-flex align-items-center justify-content-between mb-2">
+          <div className="d-flex align-items-center justify-content-start mb-2">
             <div className="fw-bold">{title}</div>
           </div>
           {/* </Link> */}
-          <Button className="w-100 fw-bold text-dark-purple bg-white border-dark-purple" onClick={() => handleShow()}>
+          <Button className="fw-bold text-dark-purple bg-white border-dark-purple" style={{ "width": "250px" }} onClick={() => handleShow()}>
             View
           </Button>
         </Card.Body>
