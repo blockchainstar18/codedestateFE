@@ -162,7 +162,7 @@ function Fa() {
 
     return (
         <div className="BuyPage position-relative" style={{ marginTop: "81px" }}>
-            <div className="SearchBar border-bottom">
+            {/* <div className="SearchBar border-bottom">
                 <Container className="d-flex justify-content-center">
                     <div
                         className="my-2 p-2 border rounded-5 d-flex align-items-center"
@@ -469,7 +469,7 @@ function Fa() {
                         </div>
                     </Modal.Body>
                 </Modal>
-            </div>
+            </div> */}
 
             <div style={{ marginTop: "20px" }} className="fs-5 fw-bold text-center">Coming Soon</div>
 
@@ -482,10 +482,10 @@ function Fa() {
                     <div>No NFTs available</div>
                 </div>
             </Row>
-            <Button className="round-btn position-ablsolute show-map-btn px-4">
+            {/* <Button className="round-btn position-ablsolute show-map-btn px-4">
                 Show Map
                 <FaMap className="ms-2" />
-            </Button>
+            </Button> */}
         </div>
     );
 }
