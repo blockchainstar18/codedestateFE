@@ -7,6 +7,7 @@ import { Style } from "./assets/style/index";
 import { ThemeContext, ThemeProvider } from "./configs/ThemeProvider";
 import AboutPage from "./screens/about/AboutPage";
 import Fa from "./screens/fractional/fa";
+import Faa from "./screens/fractional/faa";
 
 import BuyPage from "./screens/buy/BuyPage";
 import TransactionPage from "./screens/dashboard/transaction/TransactionPage";
@@ -70,6 +71,9 @@ function App() {
               <Route element={<DashboardLayout />}>
                 <Route path="/dashboard/overview" element={<OverviewPage />} />
                 <Route path="/dashboard/mint" element={<MintPage />} />
+
+                <Route path="/dashboard/fractionalizedassets" element={<Faa />} />
+
                 <Route path="/dashboard/buy/properties" element={<PropertiesPage />} />
                 <Route path="/dashboard/buy/properties/:detailID" element={<PropertiesDetail />} />
                 <Route path="/dashboard/buy/message" element={<MessagePage />} />
@@ -85,7 +89,7 @@ function App() {
               <Route element={<DashboardLayout />}>
                 <Route path="/dashboard/overview" element={<OverviewPage />} />
                 <Route path="/dashboard/mint" element={<MintPage />} />
-
+                <Route path="/dashboard/fractionalizedassets" element={<Faa />} />
                 <Route path="/dashboard/rent/properties" element={<PropertiesPage />} />
                 <Route path="/dashboard/rent/properties/:detailID" element={<PropertiesDetail />} />
                 <Route path="/dashboard/rent/message" element={<RentMessagePage />} />

@@ -26,7 +26,7 @@ const NavListItem = ({ icon, title, link }) => {
 
 const NavListData = [
   { title: "Dashboard", link: "/dashboard/overview", icon: DashboardIcon },
-  { title: "CodedBlocks", link: "/fractionalizedassets", icon: CodedblocksIcon },
+  { title: "CodedBlocks", link: "/dashboard/fractionalizedassets", icon: CodedblocksIcon },
 
   { title: "My Real Estate NFTs", link: "/dashboard/buy/properties", icon: PropertiesIcon },
   { title: "Messages", link: "/dashboard/buy/message", icon: MessageIcon },
@@ -39,7 +39,7 @@ const NavListData = [
 
 const RentalNavListData = [
   { title: "Dashboard", link: "/dashboard/overview", icon: DashboardIcon },
-  { title: "CodedBlocks", link: "/fractionalizedassets", icon: CodedblocksIcon },
+  { title: "CodedBlocks", link: "/dashboard/fractionalizedassets", icon: CodedblocksIcon },
   { title: "My Real Estate NFTs", link: "/dashboard/rent/properties", icon: PropertiesIcon },
   { title: "Messages", link: "/dashboard/rent/message", icon: MessageIcon },
   { title: "Favorites", link: "/dashboard/rent/favorite", icon: FavoritesIcon },
