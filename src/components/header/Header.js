@@ -116,6 +116,15 @@ export default function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
+              {header == "FA" ? (
+                <NavLink to="/fractionalizedassets" className="nav-link fw-bold active" onClick={() => setHeader('FA')}>
+                  Fractionalized Assets
+                </NavLink>
+              ) : (
+                <NavLink to="/fractionalizedassets" className="nav-link fw-bold" onClick={() => setHeader('FA')}>
+                  Fractionalized Assets
+                </NavLink>
+              )}
               {header == "BUY" ? (
                 <NavLink to="/buy" className="nav-link fw-bold active" onClick={() => setHeader('BUY')}>
                   Buy

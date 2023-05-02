@@ -6,6 +6,8 @@ import { DashboardLayout, HomeLayout } from "./components/layout/Layout";
 import { Style } from "./assets/style/index";
 import { ThemeContext, ThemeProvider } from "./configs/ThemeProvider";
 import AboutPage from "./screens/about/AboutPage";
+import Fa from "./screens/fractional/fa";
+
 import BuyPage from "./screens/buy/BuyPage";
 import TransactionPage from "./screens/dashboard/transaction/TransactionPage";
 import FavoritesPage from "./screens/dashboard/favorite/FavoritesPage";
@@ -59,6 +61,8 @@ function App() {
               <Route path="/buy" element={<BuyPage />} />
               <Route path="/sell" element={<SellPage />} />
               <Route path="/rent" element={<RentPage />} />
+              <Route path="/fractionalizedassets" element={<Fa />} />
+
               <Route path="/detail/buy" element={<DetailPage />} />
               <Route path="/detail/rent" element={<RentDetailPage />} />
             </Route>
