@@ -7,6 +7,7 @@ import FavoritesIcon from '../../assets/images/icons/heart.svg';
 import OffersIcon from '../../assets/images/icons/dollar.svg';
 import RewardsIcon from '../../assets/images/icons/gift.svg';
 import HoldingIcon from '../../assets/images/icons/hand.svg';
+import CodedblocksIcon from '../../assets/images/icons/codedblocks.jpg';
 import Logo from '../../assets/images/Logo-white.svg';
 import { RoundedMainBtn } from "../button/Buttons";
 import { useState } from "react";
@@ -25,6 +26,8 @@ const NavListItem = ({ icon, title, link }) => {
 
 const NavListData = [
   { title: "Dashboard", link: "/dashboard/overview", icon: DashboardIcon },
+  { title: "CodedBlocks", link: "/fractionalizedassets", icon: CodedblocksIcon },
+
   { title: "My Real Estate NFTs", link: "/dashboard/buy/properties", icon: PropertiesIcon },
   { title: "Messages", link: "/dashboard/buy/message", icon: MessageIcon },
   { title: "Favorites", link: "/dashboard/buy/favorite", icon: FavoritesIcon },
@@ -36,6 +39,7 @@ const NavListData = [
 
 const RentalNavListData = [
   { title: "Dashboard", link: "/dashboard/overview", icon: DashboardIcon },
+  { title: "CodedBlocks", link: "/fractionalizedassets", icon: CodedblocksIcon },
   { title: "My Real Estate NFTs", link: "/dashboard/rent/properties", icon: PropertiesIcon },
   { title: "Messages", link: "/dashboard/rent/message", icon: MessageIcon },
   { title: "Favorites", link: "/dashboard/rent/favorite", icon: FavoritesIcon },
@@ -51,7 +55,7 @@ export default function Sidebar() {
 
   const [mode, setMode, updateMode] = store.useState('Mode');
   const [buyMode, setBuyMode] = useState(true);
-  
+
   const toggleValue = () => {
     if (mode == "BUY") {
       setMode("RENT");
