@@ -756,8 +756,8 @@ export const UnVerifyPropertyCard = ({ title, images }) => {
   );
 };
 
-export const MyNFTCard = (tokenId) => {
-  const contractAddress = 'sei1l6c37a5xenquyjxjvsehcn4j97tca94k4yk2uzfmpeamu2vw350qmypwq4'
+export const MyNFTCard = ({ tokenId, contractAddress }) => {
+  // const contractAddress = 'sei10y50fh280l66em52mjxclh8cgchh6n7lsdpaa7fu3ham70rrv33qjwvcpe'
   const { cosmWasmClient } = useCosmWasmClient()
   const [imgURL, setURL] = useState('')
   const [title, setTitle] = useState('')
@@ -766,17 +766,17 @@ export const MyNFTCard = (tokenId) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
-  console.log(tokenId)
+
   const subQuery = {
     nft_info: {
-      token_id: tokenId.tokenId
+      token_id: tokenId
     }
   }
   cosmWasmClient?.queryContractSmart(contractAddress, subQuery).then((res) => {
-    console.log(res)
+
     fetch(res.token_uri).then(res => {
       res.json().then(res => {
-        console.log(res)
+
         setURL(res.properties.image.description)
         setName(res.properties.name.description)
         setDescription(res.properties.description.description)

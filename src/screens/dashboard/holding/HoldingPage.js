@@ -8,11 +8,13 @@ import { useState, useEffect } from "react";
 
 function HoldingPage() {
 
-  const contractAddress = 'sei1l6c37a5xenquyjxjvsehcn4j97tca94k4yk2uzfmpeamu2vw350qmypwq4'
+  const contractAddress = 'sei10y50fh280l66em52mjxclh8cgchh6n7lsdpaa7fu3ham70rrv33qjwvcpe'
+  const prevContract = 'sei1l6c37a5xenquyjxjvsehcn4j97tca94k4yk2uzfmpeamu2vw350qmypwq4'
 
   const { accounts } = useWallet();
   const { cosmWasmClient } = useCosmWasmClient()
   const [tokenIds, setTokenIds] = useState([])
+  const [prevtokenIds, setPrevTokenIds] = useState([])
 
 
   useEffect(() => {
@@ -21,11 +23,25 @@ function HoldingPage() {
 
   function setNFTs() {
 
-
-    const query = {
+    const prevquery = {
       tokens: {
         owner: accounts[0]?.address,
         limit: 100
+      }
+    };
+    cosmWasmClient?.queryContractSmart(prevContract, prevquery).then((res) => {
+      console.log(res.tokens)
+      setPrevTokenIds(res.tokens)
+
+
+
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    const query = {
+      tokens: {
+        owner: accounts[0]?.address
       }
     };
     cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
@@ -79,11 +95,15 @@ function HoldingPage() {
             </div>
             <Row>
               {
-                tokenIds.map(item => {
-                  return (<MyNFTCard tokenId={item} />)
+                prevtokenIds.map(item => {
+                  return (<MyNFTCard tokenId={item} contractAddress={prevContract} />)
                 })
               }
-
+              {
+                tokenIds.map(item => {
+                  return (<MyNFTCard tokenId={item} contractAddress={contractAddress} />)
+                })
+              }
             </Row>
           </div>
         </Tab>
