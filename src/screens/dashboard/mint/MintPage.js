@@ -21,7 +21,7 @@ function MintPage() {
     const { cosmWasmClient } = useCosmWasmClient()
     const { signingCosmWasmClient } = useSigningCosmWasmClient()
     const [flag, setflag] = useState(false)
-    const [remainNFT, setRemain] = useState(40000)
+    const [remainNFT, setRemain] = useState(100000)
     const [tokenImg, setTokenImg] = useState('')
 
     function mintCount() {
@@ -37,7 +37,7 @@ function MintPage() {
         // console.log(query);
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res)
-            const c = 40000 - res.count
+            const c = 100000 - res.count
             // console.log(c)
             setRemain(c)
         }).catch((err) => {
@@ -109,7 +109,8 @@ function MintPage() {
                     token_id: tokenId,
                     owner: accounts[0]?.address,
                     //bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy
-                    token_uri: 'https://bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4.ipfs.nftstorage.link/' + tokenId + '.json',
+                    //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
+                    token_uri: 'https://nftstorage.link/ipfs/bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum/' + tokenId + '.json',
                     extension: {},
                 },
                 // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
