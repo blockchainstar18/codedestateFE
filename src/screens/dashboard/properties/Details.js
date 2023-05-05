@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Col,
   Image,
@@ -46,6 +47,22 @@ export default function PropertiesDetail() {
   ])
   const [messageModal, setMessageModal] = useState(false);
   const [host, setHost] = useState(false);
+  const [viewerData, setViewerData] = React.useState([]);
+
+  React.useEffect(() => {
+    try {
+      let _viewerData = []
+      for (let i = 0; i < state.images.length; i++) {
+        _viewerData.push({
+          src: state.images[i]?.src,
+          alt: "Viewer"
+        });
+      }
+      setViewerData(_viewerData);
+    } catch (e) {
+  
+    }
+  }, [])
 
 
   const showMessageModal = () => {
@@ -831,8 +848,9 @@ export default function PropertiesDetail() {
       </Modal>
       <Viewer
         visible={visible}
+        defaultSize={{width: 600, height: 600}}
         onClose={() => { setVisible(false); }}
-        images={DetailData.images}
+        images={viewerData}
       />
     </div>
   );

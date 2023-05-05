@@ -50,11 +50,8 @@ export function RentDetailPage() {
       },
     }
    * */
-  console.log("======", state?.images);
 
   const [viewerData, setViewerData] = React.useState([]);
-
-  console.log(viewerData)
 
   const [minDate, setMinDate] = useState(new Date());
   const [mode, setMode, updateMode] = store.useState("Mode");
