@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Col,
   Image,
@@ -56,6 +57,24 @@ export default function FavoriteDetailPage() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [viewerData, setViewerData] = React.useState([]);
+
+  React.useEffect(() => {
+    try {
+      let _viewerData = []
+      for (let i = 0; i < state.images.length; i++) {
+        _viewerData.push({
+          src: state.images[i],
+          alt: "Viewer"
+        });
+      }
+      debugger;
+      setViewerData(_viewerData);
+    } catch (e) {
+  
+    }
+  }, [])
 
   return (
     <div className="PropertiesDetail">
@@ -307,8 +326,9 @@ export default function FavoriteDetailPage() {
       </Modal>
       <Viewer
         visible={visible}
+        defaultSize={{width: 600, height: 600}}
         onClose={() => { setVisible(false); }}
-        images={DetailData.images}
+        images={viewerData}
       />
     </div>
   );

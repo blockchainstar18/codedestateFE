@@ -112,7 +112,7 @@ function MessagePage() {
               </div>
               <Row className="border-top py-1">
                 <Col><Button className="border-gray bg-white text-dark-purple fw-bold mb-2 w-100">Modify</Button></Col>
-                <Col><Button className="border-gray bg-white text-dark-purple fw-bold w-100">Decline</Button></Col>
+                <Col><Button className="border-gray bg-white text-dark-purple fw-bold w-100">Cancel</Button></Col>
               </Row>
               <div className="border-top py-1">
                 <div className="fs-5 fw-bold my-2">Offer Details</div>
@@ -152,7 +152,7 @@ function MessagePage() {
               </div>
               <Row className="border-top py-2">
                 <Col><Button className="border-gray bg-white text-dark-purple fw-bold mb-2 w-100">Approve</Button></Col>
-                <Col><Button className="border-gray bg-white text-dark-purple fw-bold w-100">Cancel</Button></Col>
+                <Col><Button className="border-gray bg-white text-dark-purple fw-bold w-100">Decline</Button></Col>
               </Row>
               <div className="border-top py-2">
                 <div className="fs-5 fw-bold my-2">Bid Details</div>

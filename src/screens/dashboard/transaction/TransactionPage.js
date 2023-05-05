@@ -65,7 +65,7 @@ function TransactionPage() {
               <td className="text-start border-bottom-0 py-3 text-gray">3 mins ago</td>
               <td className="text-start border-bottom-0 py-3 fs-6 fw-bold">Pending</td>
             </tr>
-            <tr className="rounded-2 align-middle" onClick={mode == "BUY" && showModal}>
+            {/* <tr className="rounded-2 align-middle" onClick={mode == "BUY" && showModal}>
               <td className="border-bottom-0 ">
                 <Image src={BuildingImage} width="90" height="50" className="rounded-1 me-3 border-bottom-0" />
                 <span className="fw-bold">Kent Avenue #310</span>
@@ -176,7 +176,7 @@ function TransactionPage() {
               <td className="text-start border-bottom-0 py-3">sei14zd...0qzk</td>
               <td className="text-start border-bottom-0 py-3 text-gray">3 mins ago</td>
               <td className="text-start border-bottom-0 py-3 fs-6 fw-bold">Completed</td>
-            </tr>
+            </tr> */}
           </tbody>
         </Table>
       </div>
