@@ -26,7 +26,7 @@ const NavListItem = ({ icon, title, link }) => {
 
 const NavListData = [
   { title: "Dashboard", link: "/dashboard/overview", icon: DashboardIcon },
-  { title: "CodedBlocks", link: "/dashboard/fractionalizedassets", icon: CodedblocksIcon },
+  { title: "YieldEstate", link: "/dashboard/fractionalizedassets", icon: CodedblocksIcon },
 
   { title: "My Real Estate NFTs", link: "/dashboard/buy/properties", icon: PropertiesIcon },
   { title: "Messages", link: "/dashboard/buy/message", icon: MessageIcon },
