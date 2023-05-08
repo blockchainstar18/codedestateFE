@@ -87,10 +87,10 @@ function MintPage() {
         //     return
         // }
 
-        // if (1) {
-        //     toast.error('Sorry, NFT is not mintable now.')
-        //     return
-        // }
+        if (1) {
+            toast.error('Sorry, NFT minting is paused now.')
+            return
+        }
 
 
         const query = {
