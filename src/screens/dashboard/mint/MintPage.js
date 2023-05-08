@@ -66,11 +66,7 @@ function MintPage() {
 
     const mintNFT = async () => {
 
-        // const query = {
-        //   owner_of: {
-        //     token_id: '2'
-        //   }
-        // };
+
 
         // cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
         //   console.log(res)
@@ -100,14 +96,28 @@ function MintPage() {
         };
 
 
+
+
+
+
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res.count)
             const tokenId = (res.count + 1).toString()
             console.log(tokenId)
 
+            const OwnerQuery = {
+                owner_of: {
+                    token_id: tokenId
+                }
+            };
+
+            // cosmWasmClient?.queryContractSmart(contractAddress, OwnerQuery).then(res => {
+            //     console.log(res)
+            // }).catch
+
             const msg = {
                 mint: {
-                    token_id: tokenId,
+                    token_id: tokenId + accounts[0]?.address,
                     owner: accounts[0]?.address,
                     //bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy
                     //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
