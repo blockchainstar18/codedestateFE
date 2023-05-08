@@ -99,39 +99,31 @@ function MintPage() {
             }
         };
 
-        signingCosmWasmClient.sendTokens(accounts[0].address, 'sei12wd704w8sts0jud4mrplq2j9j0y8366dxn4395', amount, fee).then((r) => {
-            toast.success(`Sent sei Successfully! Tx hash:${r.transactionHash}}`)
-            console.log(r)
 
-            cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
-                console.log(res.count)
-                const tokenId = (res.count + 1).toString()
-                console.log(tokenId)
+        cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
+            console.log(res.count)
+            const tokenId = (res.count + 1).toString()
+            console.log(tokenId)
 
-                const msg = {
-                    mint: {
-                        token_id: tokenId,
-                        owner: accounts[0]?.address,
-                        //bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy
-                        //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
-                        token_uri: 'https://nftstorage.link/ipfs/bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum/' + tokenId + '.json',
-                        extension: {},
-                    },
-                    // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
-                };
+            const msg = {
+                mint: {
+                    token_id: tokenId,
+                    owner: accounts[0]?.address,
+                    //bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy
+                    //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
+                    token_uri: 'https://nftstorage.link/ipfs/bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum/' + tokenId + '.json',
+                    extension: {},
+                },
+                // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
+            };
 
 
 
-                signingCosmWasmClient?.execute(accounts[0].address, contractAddress, msg, fee).then(r => {
-                    console.log(r)
-                    setflag(true)
-                    imageShow(msg.mint.token_uri)
-                    toast.success(`Mint Successful! Tx hash:${r.transactionHash}}`)
-
-                }).catch((err) => {
-                    console.log(err)
-                    toast.error(`${err.toString()}`)
-                })
+            signingCosmWasmClient?.execute(accounts[0].address, contractAddress, msg, fee).then(r => {
+                console.log(r)
+                setflag(true)
+                imageShow(msg.mint.token_uri)
+                toast.success(`Mint Successful! Tx hash:${r.transactionHash}}`)
 
             }).catch((err) => {
                 console.log(err)
@@ -142,6 +134,17 @@ function MintPage() {
             console.log(err)
             toast.error(`${err.toString()}`)
         })
+
+        // signingCosmWasmClient.sendTokens(accounts[0].address, 'sei12wd704w8sts0jud4mrplq2j9j0y8366dxn4395', amount, fee).then((r) => {
+        //     toast.success(`Sent sei Successfully! Tx hash:${r.transactionHash}}`)
+        //     console.log(r)
+
+
+
+        // }).catch((err) => {
+        //     console.log(err)
+        //     toast.error(`${err.toString()}`)
+        // })
 
 
 
@@ -177,7 +180,7 @@ function MintPage() {
                             <img src={logo} style={{ "width": "20px", "height": "20px", "marginTop": "3px" }}></img>
                             <div>Price</div>
                         </div>
-                        <div className='fw-bold fs-5'>0.1</div>
+                        <div className='fw-bold fs-5'>Free</div>
                     </div>
                     <div className='flex-column'>
                         <div>Remaining</div>
