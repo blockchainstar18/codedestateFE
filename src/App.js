@@ -118,7 +118,7 @@ function App() {
               </Route>
             ) : (<Route path="*" element={<Navigate to="/rent" replace />} />)}
 
-            {/* <Route path="*" element={<Navigate to="/rent" replace />} /> */}
+            <Route path="*" element={<Navigate to="/rent" replace />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
