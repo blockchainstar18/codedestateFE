@@ -6,7 +6,7 @@ export const store = createStore();
 const Store = {
     Mode: "BUY",
     VerifyMode: true,
-    Connected: false,
+    Connected: true,
     Account: '',
     WalletModalShow: false,
     PropertiesTabActiveNum: 1,

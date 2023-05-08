@@ -30,6 +30,8 @@ export default function Header() {
 
   const [themeMode, setThemeMode] = useContext(ThemeContext);
   const [connected, setConnected, updateConnected] = store.useState('Connected');
+  // const [connected, setConnected] = useState(false)
+
   const [account, setAccount] = store.useState('Account')
   const [walletModalShow, setWalletModalShow, updateWalletModalShow] = store.useState("WalletModalShow");
   const [header, setHeader, updateHeader] = store.useState('Header');
@@ -52,7 +54,7 @@ export default function Header() {
   }
 
   const tryConnectWallet = (wallet) => {
-
+    localStorage.setItem('wallet', wallet)
     try {
       connect(wallet);
     } catch (error) {
@@ -64,27 +66,7 @@ export default function Header() {
   }
 
 
-  const connectWallet = () => {
-    if (accounts.length)
-      setConnected(connected => {
-        setwalletStr(accounts[0].address.slice(0, 4) + '...' + accounts[0].address.slice(-4))
-        setAccount(accounts[0].address)
-        connected = true;
-        return connected;
-      });
 
-  }
-
-  const disConnectWallet = () => {
-    if (accounts.length == 0)
-      setConnected(connected => {
-        setwalletStr('Connect')
-        setAccount('')
-
-        connected = false;
-        return connected;
-      });
-  }
 
   const handleThemeChange = (e) => {
     if (themeMode.theme === THEME_TYPE.LIGHT) {
@@ -95,11 +77,29 @@ export default function Header() {
     }
   }
 
+  const handleWallet = () => {
+    if (accounts.length) {
+      console.log(accounts.length)
+      localStorage.setItem('connected', true)
+      setwalletStr(accounts[0].address.slice(0, 4) + '...' + accounts[0].address.slice(-4))
+      setConnected(true)
+    }
+    else {
 
+      if (localStorage.getItem('connected') == 'true') {
+        console.log('connecting again...')
+        connect(localStorage.getItem('wallet'))
+        return
+      }
+
+      localStorage.setItem('connected', false)
+      setwalletStr('Connect')
+      setConnected(false)
+    }
+  }
 
   useEffect(() => {
-    connectWallet()
-    disConnectWallet()
+    handleWallet()
   }, [accounts])
 
 
@@ -173,7 +173,7 @@ export default function Header() {
                   show ? (<div className="headerdiv">
                     <div className="divitem" onClick={() => { setShow(false) }}>Copy address</div>
                     <div className="divitem" onClick={() => { setShow(false); handleShow() }}>Change wallet</div>
-                    <div className="divitem" onClick={() => { setShow(false); disconnect() }}>Disconnect</div>
+                    <div className="divitem" onClick={() => { setShow(false); localStorage.setItem('connected', false); disconnect(); }}>Disconnect</div>
                   </div>) : (<></>)
                 }
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,6 +37,10 @@ import BidOfferPage from "./screens/dashboard/bid_offer/BidOfferPage";
 import RentMessagePage from "./screens/dashboard/message/RentMessagePage";
 import { store } from "./configs/Store";
 import FavoriteDetailPage from "./screens/dashboard/favorite/DetailPage";
+import { SeiWalletContext, useStargateClient } from "@sei-js/react";
+import { useWallet } from '@sei-js/react';
+
+
 import './App.css'
 
 const StyleTag = () => {
@@ -50,11 +54,18 @@ const StyleTag = () => {
 }
 
 function App() {
+  // const [connected, setConnected] = useState(false)
   const [connected, setConnected, updateConnected] = store.useState('Connected');
+
+
+
+
   return (
     <div className="App">
+
       <ThemeProvider>
         <StyleTag />
+        {/* <button onClick={() => alert(connected)} style={{ "position": "absolute", "top": "200px", "zIndex": "50" }}>connected</button> */}
         <BrowserRouter>
           <Routes>
             <Route element={<HomeLayout />}>
@@ -67,7 +78,7 @@ function App() {
               <Route path="/detail/buy" element={<DetailPage />} />
               <Route path="/detail/rent" element={<RentDetailPage />} />
             </Route>
-            {connected ? (
+            {(connected && localStorage.getItem('connected') == 'true') ? (
               <Route element={<DashboardLayout />}>
                 <Route path="/dashboard/overview" element={<OverviewPage />} />
                 <Route path="/dashboard/mint" element={<MintPage />} />
@@ -85,7 +96,7 @@ function App() {
                 <Route path="/dashboard/buy/holding" element={<HoldingPage />} />
               </Route>
             ) : (<Route path="*" element={<Navigate to="/rent" replace />} />)}
-            {connected ? (
+            {(connected && localStorage.getItem('connected') == 'true') ? (
               <Route element={<DashboardLayout />}>
                 <Route path="/dashboard/overview" element={<OverviewPage />} />
                 <Route path="/dashboard/mint" element={<MintPage />} />
@@ -107,7 +118,7 @@ function App() {
               </Route>
             ) : (<Route path="*" element={<Navigate to="/rent" replace />} />)}
 
-            <Route path="*" element={<Navigate to="/rent" replace />} />
+            {/* <Route path="*" element={<Navigate to="/rent" replace />} /> */}
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
