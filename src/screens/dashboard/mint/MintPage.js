@@ -38,7 +38,7 @@ function MintPage() {
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res)
             const c = 100000 + 118296 - res.count
-            console.log(c)
+            // console.log(c)
             setRemain(0)
         }).catch((err) => {
             console.log(err)
