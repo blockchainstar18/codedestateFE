@@ -183,7 +183,7 @@ function MintPage() {
                             <div style={{ "width": "6px", "height": "6px", "borderRadius": "3px", "background": "green", "marginTop": "10px" }}></div>
                             <div>Status</div>
                         </div>
-                        <div className='fw-bold fs-5'>Live</div>
+                        <div className='fw-bold fs-5'>Paused</div>
                     </div>
                     <div className='flex-column'>
                         <div className='d-flex flex-row'>
