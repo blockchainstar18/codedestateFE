@@ -21,7 +21,7 @@ function MintPage() {
     const { cosmWasmClient } = useCosmWasmClient()
     const { signingCosmWasmClient } = useSigningCosmWasmClient()
     const [flag, setflag] = useState(false)
-    const [remainNFT, setRemain] = useState(100000)
+    const [remainNFT, setRemain] = useState(100000 + 118296)
     const [tokenImg, setTokenImg] = useState('')
 
     function mintCount() {
@@ -37,9 +37,9 @@ function MintPage() {
         // console.log(query);
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res)
-            const c = 100000 - res.count
+            const c = 100000 + 118296 - res.count
             // console.log(c)
-            setRemain(0)
+            setRemain(c)
         }).catch((err) => {
             console.log(err)
         })
@@ -83,10 +83,10 @@ function MintPage() {
         //     return
         // }
 
-        if (1) {
-            toast.error('Sorry, NFT minting is paused now.')
-            return
-        }
+        // if (1) {
+        //     toast.error('Sorry, NFT minting is paused now.')
+        //     return
+        // }
         const fee = calculateFee(150000, "0.1usei");
 
         const amount = [{ amount: "100000", denom: "usei" }]
@@ -102,7 +102,7 @@ function MintPage() {
 
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
             console.log(res.count)
-            const tokenId = (res.count + 1).toString()
+            const tokenId = (res.count - 118296 + 1).toString()
             console.log(tokenId)
 
             const OwnerQuery = {
@@ -121,7 +121,8 @@ function MintPage() {
                     owner: accounts[0]?.address,
                     //bafybeiff7qheqlovhmz5t4dhu3q6zjijm7uxlfbhu4r6syx3fcu4i7f6wy
                     //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
-                    token_uri: 'https://nftstorage.link/ipfs/bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum/' + tokenId + '.json',
+                    //bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum
+                    token_uri: 'https://nftstorage.link/ipfs/bafybeiha4h5c2u27zx5vhsp4q7ocsgqhf5ofa6kjyv3qzwtgetrwnvzj5m/' + tokenId + '.json',
                     extension: {},
                 },
                 // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
@@ -183,7 +184,7 @@ function MintPage() {
                             <div style={{ "width": "6px", "height": "6px", "borderRadius": "3px", "background": "green", "marginTop": "10px" }}></div>
                             <div>Status</div>
                         </div>
-                        <div className='fw-bold fs-5'>Paused</div>
+                        <div className='fw-bold fs-5'>Phase 2 Live</div>
                     </div>
                     <div className='flex-column'>
                         <div className='d-flex flex-row'>
