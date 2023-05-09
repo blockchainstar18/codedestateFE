@@ -39,7 +39,7 @@ function MintPage() {
             console.log(res)
             const c = 100000 - res.count
             // console.log(c)
-            setRemain(c)
+            setRemain(0)
         }).catch((err) => {
             console.log(err)
         })
@@ -83,10 +83,10 @@ function MintPage() {
         //     return
         // }
 
-        // if (1) {
-        //     toast.error('Sorry, NFT minting is paused now.')
-        //     return
-        // }
+        if (1) {
+            toast.error('Sorry, NFT minting is paused now.')
+            return
+        }
         const fee = calculateFee(150000, "0.1usei");
 
         const amount = [{ amount: "100000", denom: "usei" }]
