@@ -222,47 +222,6 @@ function MintPage() {
 
         </div>
 
-
-
-        // <div>
-        //     <div className='text-[20px] font-bold ml-1'>Mint Your Token</div>
-        //     <div className='text-[14px] ml-1'>NFTs drop March 15th, at 2:00 PM UTC</div>
-
-        //     <div className='mx-auto mt-3 max-w-[150px] text-center px-[5px] bg-[#301570] font-bold py-[5px] text-white rounded-[10px] cursor-pointer'>
-        //         <WalletConnectButton />
-        //     </div>
-
-        //     <ToastContainer />
-
-        //     <div className='w-[70vw] max-w-[500px] h-[70px] pt-[10px] mx-auto mt-[5vh]  shadow-[0_0_0_2px_rgba(0,0,0,0.1)] flex-row text-center rounded-[5px]'>
-        //         <div className='mx-auto'>
-        //             <div className='flex'>
-        //                 <div className='w-[6px] h-[6px] bg-[#00ff00] rounded-[3px] my-auto mr-1'></div>
-        //                 <div className='text-[14px]'>
-
-        //                     Status</div></div>
-        //             <div className='text-[20px] font-bold'>Open</div>
-        //         </div>
-        //         <div className='mx-auto'>
-        //             <div className='flex'>
-        //                 <img src={logo} className='w-[20px] h-[20px] my-auto mr-1'></img>
-        //                 <div className='text-[14px]'>
-
-        //                     Price</div></div>
-        //             <div className='text-[20px] font-bold'>Free</div>
-        //         </div>
-        //         <div className='mx-auto'>
-        //             <div className='text-[14px]'>Remaining</div>
-        //             <div className='text-[20px] font-bold'>{remainNFT}</div>
-        //         </div>
-
-        //     </div>
-        //     <img src={nft} className='mx-auto my-[15vh] w-[200px] rounded-[100px]'></img>
-        //     <div className='mx-auto text-center w-[300px] h-[50px] bg-[#301570] font-bold pt-[12px] text-white rounded-[10px] cursor-pointer' onClick={() => {
-        //         mintNFT()
-        //     }}>Mint Your NFT</div>
-
-        // </div>
     )
 }
 
