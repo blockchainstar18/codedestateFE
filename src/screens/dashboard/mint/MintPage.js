@@ -89,7 +89,7 @@ function MintPage() {
         }
         const fee = calculateFee(150000, "0.1usei");
 
-        const amount = [{ amount: "100000", denom: "usei" }]
+        // const amount = [{ amount: "100000", denom: "usei" }]
         const query = {
             num_tokens: {
             }
