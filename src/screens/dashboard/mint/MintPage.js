@@ -39,7 +39,7 @@ function MintPage() {
             console.log(res)
             const c = 100000 + 118296 - res.count
             // console.log(c)
-            setRemain(c)
+            setRemain(0)
         }).catch((err) => {
             console.log(err)
         })
@@ -83,10 +83,10 @@ function MintPage() {
         //     return
         // }
 
-        // if (1) {
-        //     toast.error('Sorry, NFT minting is paused now.')
-        //     return
-        // }
+        if (1) {
+            toast.error('Sorry, NFT minting is paused now.')
+            return
+        }
         const fee = calculateFee(150000, "0.1usei");
 
         const amount = [{ amount: "100000", denom: "usei" }]
@@ -94,8 +94,6 @@ function MintPage() {
             num_tokens: {
             }
         };
-
-
 
 
 
@@ -146,9 +144,11 @@ function MintPage() {
             toast.error(`${err.toString()}`)
         })
 
+
         // signingCosmWasmClient.sendTokens(accounts[0].address, 'sei12wd704w8sts0jud4mrplq2j9j0y8366dxn4395', amount, fee).then((r) => {
         //     toast.success(`Sent sei Successfully! Tx hash:${r.transactionHash}}`)
         //     console.log(r)
+
 
 
 
@@ -184,7 +184,7 @@ function MintPage() {
                             <div style={{ "width": "6px", "height": "6px", "borderRadius": "3px", "background": "green", "marginTop": "10px" }}></div>
                             <div>Status</div>
                         </div>
-                        <div className='fw-bold fs-5'>Phase 2 Live</div>
+                        <div className='fw-bold fs-5'>Paused</div>
                     </div>
                     <div className='flex-column'>
                         <div className='d-flex flex-row'>
