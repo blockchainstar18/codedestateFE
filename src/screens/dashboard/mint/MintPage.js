@@ -67,17 +67,6 @@ function MintPage() {
     const mintNFT = async () => {
 
 
-
-        // cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
-        //   console.log(res)
-        // }).catch((err) => {
-        //   console.log(err)
-        // })
-
-
-
-
-
         // if (!accounts[0]?.address) {
         //     toast(<div className='text-red-600'>Wallet not connected!</div>)
         //     return
