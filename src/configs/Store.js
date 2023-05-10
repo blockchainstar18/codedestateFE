@@ -11,7 +11,8 @@ const Store = {
     WalletModalShow: false,
     PropertiesTabActiveNum: 1,
     DetailType: "",
-    Header: "RENT"
+    Header: "RENT",
+    RealConnected: false,
 }
 
 const keys = Object.keys(Store);

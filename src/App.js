@@ -40,7 +40,6 @@ import FavoriteDetailPage from "./screens/dashboard/favorite/DetailPage";
 import { SeiWalletContext, useStargateClient } from "@sei-js/react";
 import { useWallet } from '@sei-js/react';
 
-
 import './App.css'
 
 const StyleTag = () => {
@@ -56,7 +55,7 @@ const StyleTag = () => {
 function App() {
   // const [connected, setConnected] = useState(false)
   const [connected, setConnected, updateConnected] = store.useState('Connected');
-
+  const [realConnected, setRealConnected, updateRealConnected] = store.useState('RealConnected');
 
 
 

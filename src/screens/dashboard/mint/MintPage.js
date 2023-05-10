@@ -111,9 +111,10 @@ function MintPage() {
 
         cosmWasmClient?.queryContractSmart(contractAddress, query).then((res) => {
 
-            const tokenId = ((res.count + 1) % 1000000).toString()
+            var tokenId = ((res.count + 1) % 10000).toString()
 
-
+            if (tokenId == '0')
+                tokenId = '1'
 
             console.log(tokenId)
             const OwnerQuery = {
@@ -126,6 +127,7 @@ function MintPage() {
             //     console.log(res)
             // }).catch
 
+
             const randomId = generateRandomString(10)
 
             const CONTRACT_MESSAGE = {
@@ -136,7 +138,10 @@ function MintPage() {
                     //bafybeicv2dvbxcq72pzfbxjuhivxnljyzttyfcxs3djrl6abaax56s5be4
                     //bafybeicfjlcheitcxxaf6g53rmnprwfb6kuzjgbawj5krjvn7rckm5koum
                     // https://nftstorage.link/ipfs/bafybeiabagyfklfquemzy2bkf4zeiled75izpay5g6phdn7ct4ouraccgq
-                    token_uri: 'https://nftstorage.link/ipfs/bafybeiabagyfklfquemzy2bkf4zeiled75izpay5g6phdn7ct4ouraccgq/' + tokenId + '.json',
+                    //https://nftstorage.link/ipfs/bafybeiabagyfklfquemzy2bkf4zeiled75izpay5g6phdn7ct4ouraccgq/
+                    //bafybeighcbxvtbli2tcuvsi5uavjmttjow4rtsi4qng4rpzl6ybzqn6oka
+
+                    token_uri: 'https://nftstorage.link/ipfs/bafybeighcbxvtbli2tcuvsi5uavjmttjow4rtsi4qng4rpzl6ybzqn6oka/' + tokenId + '.json',
                     extension: {},
                 },
                 // transfer_nft: { recipient: 'sei166v9p8yfca65um5p3vp05h648ufmtu33zd0d8e', token_id: '31' },
@@ -236,48 +241,6 @@ function MintPage() {
                 )
             }
         </div>
-
-
-
-        // <div>
-        //     <div className='text-[20px] font-bold ml-1'>Mint Your Token</div>
-        //     <div className='text-[14px] ml-1'>NFTs drop March 15th, at 2:00 PM UTC</div>
-
-        //     <div className='mx-auto mt-3 max-w-[150px] text-center px-[5px] bg-[#301570] font-bold py-[5px] text-white rounded-[10px] cursor-pointer'>
-        //         <WalletConnectButton />
-        //     </div>
-
-        //     <ToastContainer />
-
-        //     <div className='w-[70vw] max-w-[500px] h-[70px] pt-[10px] mx-auto mt-[5vh]  shadow-[0_0_0_2px_rgba(0,0,0,0.1)] flex-row text-center rounded-[5px]'>
-        //         <div className='mx-auto'>
-        //             <div className='flex'>
-        //                 <div className='w-[6px] h-[6px] bg-[#00ff00] rounded-[3px] my-auto mr-1'></div>
-        //                 <div className='text-[14px]'>
-
-        //                     Status</div></div>
-        //             <div className='text-[20px] font-bold'>Open</div>
-        //         </div>
-        //         <div className='mx-auto'>
-        //             <div className='flex'>
-        //                 <img src={logo} className='w-[20px] h-[20px] my-auto mr-1'></img>
-        //                 <div className='text-[14px]'>
-
-        //                     Price</div></div>
-        //             <div className='text-[20px] font-bold'>Free</div>
-        //         </div>
-        //         <div className='mx-auto'>
-        //             <div className='text-[14px]'>Remaining</div>
-        //             <div className='text-[20px] font-bold'>{remainNFT}</div>
-        //         </div>
-
-        //     </div>
-        //     <img src={nft} className='mx-auto my-[15vh] w-[200px] rounded-[100px]'></img>
-        //     <div className='mx-auto text-center w-[300px] h-[50px] bg-[#301570] font-bold pt-[12px] text-white rounded-[10px] cursor-pointer' onClick={() => {
-        //         mintNFT()
-        //     }}>Mint Your NFT</div>
-
-        // </div>
     )
 }
 

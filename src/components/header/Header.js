@@ -30,6 +30,7 @@ export default function Header() {
 
   const [themeMode, setThemeMode] = useContext(ThemeContext);
   const [connected, setConnected, updateConnected] = store.useState('Connected');
+  const [realConnected, setRealConnected, updateRealConnected] = store.useState('RealConnected');
   // const [connected, setConnected] = useState(false)
 
   const [account, setAccount] = store.useState('Account')
@@ -57,6 +58,8 @@ export default function Header() {
     localStorage.setItem('wallet', wallet)
     try {
       connect(wallet);
+      setRealConnected(true);
+
     } catch (error) {
       toast.error(error.toString())
       console.log(error)
@@ -149,11 +152,11 @@ export default function Header() {
               {!connected ? ("") : (
                 <span>
                   {header == "DASHBOARD" ? (
-                    <NavLink to="/dashboard/overview" className="nav-link fw-bold active" onClick={() => setHeader('DASHBOARD')}>
+                    <NavLink to="/dashboard/overview" className="nav-link fw-bold active" onClick={() => { setHeader('DASHBOARD') }}>
                       Dashboard
                     </NavLink>
                   ) : (
-                    <NavLink to="/dashboard/overview" className="nav-link fw-bold" onClick={() => setHeader('DASHBOARD')}>
+                    <NavLink to="/dashboard/overview" className="nav-link fw-bold" onClick={() => { setHeader('DASHBOARD') }}>
                       Dashboard
                     </NavLink>
                   )}
